@@ -1,0 +1,10 @@
+{
+  "expo": {
+    "name": "exercicio_mod_3",
+    "slug": "exercicio_mod_3",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
