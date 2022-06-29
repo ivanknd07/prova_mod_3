@@ -34,7 +34,35 @@ export default function LivrosList() {
 
  useEffect(getDados,[]);
 
-  
+ const getActions = (item) => {
+  return (
+      <>
+          <TouchableOpacity style={styles.btn_delete} onPress={alertRemove}>
+              <AntDesign name="delete" size={20} color="white" />
+          </TouchableOpacity>
+
+      </>
+
+  )
+} 
+
+function alertRemove(item){
+  Alert.alert('EXCLUIR LIVRO', 'Deseja excluir esse livro', [
+      {
+      text: 'SIM',
+      onPress(){
+          
+      }
+     },
+     {
+      text: 'NÃO'
+     }
+     
+     ])
+
+}
+
+
   return (
 
     <View style={styles.container}>

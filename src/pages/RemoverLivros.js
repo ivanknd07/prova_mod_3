@@ -52,11 +52,12 @@ export default function RemoverLivros() {
         )
     }
 
+
     function deleteLivro(){
         axios.delete(`https://hn.algolia.com/api/v1/search/?query=${buscaText}`);
     }
 
-    const {state, dispatch} =  useContext(LivrosContext)
+    //const {state, dispatch} =  useContext(LivrosContext)
    // console.warn(Object.keys(ctx.state))
     function alertRemove(item){
         Alert.alert('EXCLUIR LIVRO', 'Deseja excluir esse livro', [
@@ -215,4 +216,5 @@ const styles = StyleSheet.create({
         borderRadius:5
     }
 
+   
 });
