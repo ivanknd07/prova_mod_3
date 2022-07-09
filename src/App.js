@@ -17,7 +17,7 @@ import Conta_user from './pages/pages_bottom_tab/Conta_user'
 import Contats from './pages/pages_bottom_tab/Contats'
 import Config from './pages/pages_bottom_tab/Config'
 import Compartilhar from './pages/pages_bottom_tab/Compartilhar'
-import { LivrosProvider } from './pages/contexto/LivrosContext'
+
 
 
 const Stack = createStackNavigator()
@@ -60,7 +60,7 @@ function MyAbas() {
                     ),
                 }}
             />
-          
+
             <Tab.Screen
                 name="Compartilhar"
                 component={Compartilhar}
@@ -135,12 +135,10 @@ export default function App() {
 
 
     return (
-        <LivrosProvider>
-            <NavigationContainer>
-                <MyStack />
+        <NavigationContainer>
+            <MyStack />
+        </NavigationContainer>
 
-            </NavigationContainer>
-        </LivrosProvider>
     );
 }
 
