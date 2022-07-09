@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, FlatList } from 'react-native';
-import uuid from 'react-native-uuid';
 
-import AsyncStorage from '@react-native-async-storage/async-storage';
+
+
 
 import { FontAwesome5 } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons';
@@ -17,7 +17,7 @@ export default function LivrosList() {
   const [buscaText, setBuscaText] = useState('');
   const [dados, setDatos] = useState('');
   
-
+/**********************************************************************************************************************************/
   async function getDados() {
     try {
       const response = await axios.get(`https://hn.algolia.com/api/v1/search/?query=${buscaText}`);
@@ -33,35 +33,21 @@ export default function LivrosList() {
   }
 
  useEffect(getDados,[]);
+/**********************************************************************************************************************************/
+ 
+/**********************************************************************************************************************************/
 
- const getActions = (item) => {
-  return (
-      <>
-          <TouchableOpacity style={styles.btn_delete} onPress={alertRemove}>
-              <AntDesign name="delete" size={20} color="white" />
-          </TouchableOpacity>
 
-      </>
+/**********************************************************************************************************************************/
 
-  )
-} 
 
-function alertRemove(item){
-  Alert.alert('EXCLUIR LIVRO', 'Deseja excluir esse livro', [
-      {
-      text: 'SIM',
-      onPress(){
-          
-      }
-     },
-     {
-      text: 'NÃO'
-     }
-     
-     ])
+/**********************************************************************************************************************************/
 
-}
 
+/**********************************************************************************************************************************/
+
+
+/**********************************************************************************************************************************/
 
   return (
 
@@ -77,7 +63,6 @@ function alertRemove(item){
 
           <FontAwesome5 name="search" size={30} color="white" />
 
-
         </TouchableOpacity>
 
       </View>
@@ -89,13 +74,13 @@ function alertRemove(item){
 
           <View style={styles.containerLivros}>
               <Text style={styles.textAuthor}><Entypo name="user" size={24} color="black" />
-                    <Text style={{fontWeight: "bold"}}>author : </Text>{item.author} </Text>
+                    <Text style={{fontWeight: "bold"}}> author : </Text>{item.author} </Text>
 
                     <Text style={styles.textTitle}><FontAwesome name="book" size={24} color="black" />
-                    <Text style={{fontWeight: "bold"}}>title : </Text>{item.title}</Text>
+                    <Text style={{fontWeight: "bold"}}> title : </Text>{item.title}</Text>
 
                     <Text style={styles.textUrl}><Feather name="link" size={24} color="black" />
-                    <Text style={{fontWeight: "bold"}}>url:</Text> {item.url}</Text>
+                    <Text style={{fontWeight: "bold"}}> url:</Text> {item.url}</Text>
 
           </View>
         )
@@ -104,6 +89,7 @@ function alertRemove(item){
       />
 
     </View>
+    
 
 
   );

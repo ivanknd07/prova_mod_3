@@ -2,15 +2,10 @@ import React, { Component } from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack'
-import { MaterialCommunityIcons } from '@expo/vector-icons';
-
 
 import { Ionicons } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
 import { FontAwesome } from '@expo/vector-icons';
-
-
-import { NavigationContainer } from "@react-navigation/native";
 
 
 export default class Homme extends Component {
@@ -42,6 +37,7 @@ export default class Homme extends Component {
 
         const Tab = createBottomTabNavigator()
         const Stack = createStackNavigator()
+     
         return (
          
             <View style={styles.container}>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, FlatList, Alert } from 'react-native';
-import { ListItem, Avatar, Button } from '@rneui/base';
+import { ListItem } from '@rneui/base';
 import { useNavigation } from '@react-navigation/native';
 
 

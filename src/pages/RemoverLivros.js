@@ -1,10 +1,6 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, FlatList, Alert } from 'react-native';
-import { ListItem, Avatar, Button } from '@rneui/base';
-
-
-
-import { FontAwesome5 } from '@expo/vector-icons';
+import { ListItem } from '@rneui/base';
 
 import { Entypo } from '@expo/vector-icons';
 import { FontAwesome } from '@expo/vector-icons';
@@ -13,7 +9,7 @@ import { Feather } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
 
 import axios from 'axios';
-import LivrosContext from './contexto/LivrosContext';
+
 
 export default function RemoverLivros() {
 
@@ -25,8 +21,7 @@ export default function RemoverLivros() {
 
     async function getDados() {
         try {
-            const response = await axios.get(`https://hn.algolia.com/api/v1/search/?query=${buscaText}`);
-            //BUSCA POR UM AUTOR ESPECIFICO: https://hn.algolia.com/api/v1/search/?query=tags=author_:${buscaText}
+            const response = await axios.get(`https://hn.algolia.com/api/v1/search`);
             setBuscaText([])
             console.log(response.data.hits);
             setDatos(response.data.hits);
@@ -39,7 +34,7 @@ export default function RemoverLivros() {
 
     useEffect(getDados, []);
 
-   
+
     const getActions = (item) => {
         return (
             <>
@@ -52,67 +47,51 @@ export default function RemoverLivros() {
         )
     }
 
+    /*
+        function deleteLivro(){
+            axios.delete(`https://hn.algolia.com/api/v1/search/?query=${buscaText}`);
+        }
+    */
 
-    function deleteLivro(){
-        axios.delete(`https://hn.algolia.com/api/v1/search/?query=${buscaText}`);
-    }
-
-    //const {state, dispatch} =  useContext(LivrosContext)
-   // console.warn(Object.keys(ctx.state))
-    function alertRemove(item){
+    function alertRemove(item) {
         Alert.alert('EXCLUIR LIVRO', 'Deseja excluir esse livro', [
             {
-            text: 'SIM',
-            onPress(){
-                
+                text: 'SIM',
+                /* onPress(){
+                     
+                 }*/
+            },
+            {
+                text: 'NÃO'
             }
-           },
-           {
-            text: 'NÃO'
-           }
-           
-           ])
-     
+
+        ])
+
     }
-    /*  Alert.alert('EXCLUIR LIVRO', 'Deseja excluir esse livro', [
-        {
-        text: 'SIM',
-        onPress(){
-            dispatch({
-                type: 'deleteLivro', 
-                payload: LivrosContext,
-            })
-        }
-       },
-       {
-        text: 'NÃO'
-       }
-       
-       ]) */
 
     const RemoveLivro = ({ item }) => {
-        return (         
+        return (
             <ListItem>
                 <ListItem.Content>
-                <View style={styles.containerLivros}>
+                    <View style={styles.containerLivros}>
 
-                    <Text style={styles.textAuthor}><Entypo name="user" size={24} color="black" />
-                    <Text style={{fontWeight: "bold"}}>author : </Text>{item.author} </Text>
+                        <Text style={styles.textAuthor}><Entypo name="user" size={24} color="black" />
+                            <Text style={{ fontWeight: "bold" }}> author : </Text>{item.author} </Text>
 
-                    <Text style={styles.textTitle}><FontAwesome name="book" size={24} color="black" />
-                    <Text style={{fontWeight: "bold"}}>title : </Text>{item.title}</Text>
+                        <Text style={styles.textTitle}><FontAwesome name="book" size={24} color="black" />
+                            <Text style={{ fontWeight: "bold" }}> title : </Text>{item.title}</Text>
 
-                    <Text style={styles.textUrl}><Feather name="link" size={24} color="black" />
-                    <Text style={{fontWeight: "bold"}}>url:</Text> {item.url}</Text>
-                  
-                </View>
+                        <Text style={styles.textUrl}><Feather name="link" size={24} color="black" />
+                            <Text style={{ fontWeight: "bold" }}> url:</Text> {item.url}</Text>
+
+                    </View>
 
                 </ListItem.Content>
 
                 <View>
-                {getActions(item)}
+                    {getActions(item)}
                 </View>
-                
+
             </ListItem>
 
 
@@ -122,9 +101,9 @@ export default function RemoverLivros() {
 
     return (
 
-        <View  style={{
+        <View style={{
             flex: 1
-          }}>
+        }}>
 
             <FlatList
                 data={dados}
@@ -150,13 +129,13 @@ const styles = StyleSheet.create({
         margin: -6,
     },
 
-  
+
     viewColuna: {
         flexDirection: 'row',
         marginBottom: 0
     },
 
-   
+
 
     requisicao: {
 
@@ -172,7 +151,7 @@ const styles = StyleSheet.create({
         width: 400,
         alignItems: 'flex-start',
         justifyContent: 'center',
-        margin:5,
+        margin: 5,
         padding: 15,
         position: 'relative'
     },
@@ -211,10 +190,10 @@ const styles = StyleSheet.create({
         margin: 15,
         marginTop: 15,
         alignSelf: 'center',
-        backgroundColor:'red',
-        padding:8,
-        borderRadius:5
+        backgroundColor: 'red',
+        padding: 8,
+        borderRadius: 5
     }
 
-   
+
 });
